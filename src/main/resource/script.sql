@@ -1,46 +1,3 @@
--- Création de la table Category
-CREATE TABLE category (
-        id INT NOT NULL,
-        name TEXT,
-        description TEXT,
-        PRIMARY KEY (id)
-);
-
--- Création de la table Product
-CREATE TABLE product (
-         id INT NOT NULL,
-         name TEXT,
-         description TEXT,
-         price_pt DOUBLE,
-         PRIMARY KEY (id),
-         FOREIGN KEY (id_category) REFERENCES category(id),
-);
-
--- Création de la table Item
-CREATE TABLE item (
-        id INT NOT NULL,
-        quantity INT,
-        unit_price DOUBLE,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_product) REFERENCES product(id)
-);
-
--- Création de la table ShoppingCart
-CREATE TABLE shopping_cart (
-        id INT NOT NULL,
-        total DOUBLE,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_user) REFERENCES user(id)
-);
-
--- Création de la table ShoppingCartItem
-CREATE TABLE shopping_cart_item (
-        id INT NOT NULL,
-        PRIMARY KEY (id),
-        FOREIGN KEY (id_shopping_cart) REFERENCES shopping_cart(id),
-        FOREIGN KEY (id_item) REFERENCES item(id)
-);
-
 -- Création de la table Address
 CREATE TABLE address (
         id INT NOT NULL,
@@ -63,15 +20,67 @@ CREATE TABLE user (
         id INT NOT NULL,
         email TEXT,
         password TEXT,
+        id_address INT NOT NULL,
+        id_role INT NOT NULL,
         PRIMARY KEY (id),
         FOREIGN KEY (id_address) REFERENCES address(id),
         FOREIGN KEY (id_role) REFERENCES role(id)
+);
+
+-- Création de la table Category
+CREATE TABLE category (
+        id INT NOT NULL,
+        name TEXT,
+        description TEXT,
+        PRIMARY KEY (id)
+);
+
+-- Création de la table Product
+CREATE TABLE product (
+         id INT NOT NULL,
+         name TEXT,
+         description TEXT,
+         price_pt DOUBLE,
+         id_category INT NOT NULL,
+         PRIMARY KEY (id),
+         FOREIGN KEY (id_category) REFERENCES category(id),
+);
+
+-- Création de la table Item
+CREATE TABLE item (
+        id INT NOT NULL,
+        quantity INT,
+        unit_price DOUBLE,
+        id_product INT NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (id_product) REFERENCES product(id)
+);
+
+-- Création de la table ShoppingCart
+CREATE TABLE shopping_cart (
+        id INT NOT NULL,
+        total DOUBLE,
+        id_user INT NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (id_user) REFERENCES user(id)
+);
+
+-- Création de la table ShoppingCartItem
+CREATE TABLE shopping_cart_item (
+        id INT NOT NULL
+        id_shopping_cart INT NOT NULL,
+        id_item INT NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (id_shopping_cart) REFERENCES shopping_cart(id),
+        FOREIGN KEY (id_item) REFERENCES item(id)
 );
 
 -- Création de la table Quote
 CREATE TABLE quote (
         id INT NOT NULL,
         date DATE,
+        id_user INT NOT NULL,
+        id_shopping_cart INT NOT NULL,
         PRIMARY KEY (id),
         FOREIGN KEY (id_user) REFERENCES user(id),
         FOREIGN KEY (id_shopping_cart) REFERENCES shopping_cart(id)
@@ -171,14 +180,6 @@ FROM dual;
 END;
 
 -- Création d'une procédure pour insérer des données dans la table Category
-CREATE OR REPLACE PROCEDURE insert_category (name TEXT, description TEXT)
-AS
-BEGIN
-INSERT INTO category (name, description)
-VALUES (name, description);
-END;
-
--- Création d'une procédure pour insérer des données dans la table Category
 CREATE OR REPLACE PROCEDURE generate_categories()
 LANGUAGE plpgsql
 AS $$
@@ -186,7 +187,7 @@ DECLARE
 i INT := 1;
 BEGIN
     WHILE i <= 10 LOOP
-        INSERT INTO category (id_category, name, description)
+        INSERT INTO category (id, name, description)
         VALUES (NEXTVAL('category_sequence'), 'Category'  i, 'Description' || i);
         i := i + 1;
 END LOOP;
@@ -202,9 +203,9 @@ i INT := 1;
 j INT := 1;
 BEGIN
     WHILE i <= 1000 LOOP
-        INSERT INTO product (id_product, name, description, price_pt, id_category)
+        INSERT INTO product (id, name, description, price_pt, id_category)
         VALUES (NEXTVAL('article_sequence'), 'Article'  i, 'Description' || i, RANDOM() * 100, j);
-        IF i % 10 = 0 THEN
+        IF i % 100 = 0 THEN
           j := j + 1;
         END IF;
         i := i + 1;
