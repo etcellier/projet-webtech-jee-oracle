@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class CategoryController {
 
-    private final CategoryService categoryService;
+    protected final CategoryService categoryService;
 
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
@@ -26,7 +26,7 @@ public class CategoryController {
     }
 
     @GetMapping("/category/{id}")
-    public Optional<CategoryDTO> get(@PathVariable Long id) {
-        return categoryService.get(id);
+    public Optional<CategoryDTO> get(@PathVariable String id) {
+        return categoryService.get(Long.parseLong(id));
     }
 }
