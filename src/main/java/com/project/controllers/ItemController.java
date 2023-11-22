@@ -2,10 +2,7 @@ package com.project.controllers;
 
 import com.project.dto.ItemDTO;
 import com.project.service.item.ItemService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,5 +25,20 @@ public class ItemController {
     @GetMapping("/item/{id}")
     public Optional<ItemDTO> get(@PathVariable String id) {
         return itemService.get(Long.parseLong(id));
+    }
+
+    @PostMapping("/item")
+    public void create(@RequestBody ItemDTO itemDTO) {
+        itemService.create(itemDTO);
+    }
+
+    @PutMapping("/item")
+    public void update(@RequestBody ItemDTO itemDTO) {
+        itemService.update(itemDTO);
+    }
+
+    @DeleteMapping("/item/{id}")
+    public void delete(@PathVariable String id) {
+        itemService.delete(Long.parseLong(id));
     }
 }

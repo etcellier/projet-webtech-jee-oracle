@@ -2,10 +2,7 @@ package com.project.controllers;
 
 import com.project.dto.AddressDTO;
 import com.project.service.address.AddressService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,5 +25,20 @@ public class AddressController {
     @GetMapping("/address/{id}")
     public Optional<AddressDTO> get(@PathVariable String id) {
         return addressService.get(Long.parseLong(id));
+    }
+
+    @PostMapping("/address")
+    public void create(@RequestBody AddressDTO addressDTO) {
+        addressService.create(addressDTO);
+    }
+
+    @PutMapping("/address")
+    public void update(@RequestBody AddressDTO addressDTO) {
+        addressService.update(addressDTO);
+    }
+
+    @DeleteMapping("/address/{id}")
+    public void delete(@PathVariable String id) {
+        addressService.delete(Long.parseLong(id));
     }
 }

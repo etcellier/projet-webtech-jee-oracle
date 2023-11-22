@@ -31,4 +31,19 @@ public class CategoryService {
         Optional<Category> category = categoryRepository.findById(id);
         return category.map(categoryMapper::map);
     }
+
+    public void create(CategoryDTO categoryDTO) {
+        Category category = categoryRepository.save(categoryMapper.update(categoryDTO, new Category()));
+        categoryRepository.save(category);
+    }
+
+    public void update(CategoryDTO categoryDTO) {
+        Category category = categoryRepository.findById(categoryDTO.getId()).get();
+        category = categoryMapper.update(categoryDTO, category);
+        categoryRepository.save(category);
+    }
+
+    public void delete(Long id) {
+        categoryRepository.deleteById(id);
+    }
 }

@@ -23,7 +23,6 @@ public class ItemMapper {
     }
 
     public Item update(ItemDTO dto, Item entity) {
-        entity.setId(dto.getId());
         entity.setProduct(productMapper.update(dto.getProduct(), entity.getProduct()));
         entity.setQuantity(dto.getQuantity());
         entity.setUnitPrice(dto.getUnitPrice());

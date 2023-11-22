@@ -31,4 +31,19 @@ public class ProductService {
         Optional<Product> product = productRepository.findById(id);
         return product.map(productMapper::map);
     }
+
+    public void create(ProductDTO productDTO) {
+        Product product = productRepository.save(productMapper.update(productDTO, new Product()));
+        productRepository.save(product);
+    }
+
+    public void update(ProductDTO productDTO) {
+        Product product = productRepository.findById(productDTO.getId()).get();
+        product = productMapper.update(productDTO, product);
+        productRepository.save(product);
+    }
+
+    public void delete(Long id) {
+        productRepository.deleteById(id);
+    }
 }

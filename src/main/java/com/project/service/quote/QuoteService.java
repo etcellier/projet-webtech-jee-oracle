@@ -31,4 +31,20 @@ public class QuoteService {
         Optional<Quote> quote = quoteRepository.findById(id);
         return quote.map(quoteMapper::map);
     }
+
+    public void create(QuoteDTO quoteDTO) {
+        Quote quote = quoteRepository.save(quoteMapper.update(quoteDTO, new Quote()));
+        quoteRepository.save(quote);
+    }
+
+    public void update(QuoteDTO quoteDTO) {
+        Quote quote = quoteRepository.findById(quoteDTO.getId()).get();
+        quote = quoteMapper.update(quoteDTO, quote);
+        quoteRepository.save(quote);
+    }
+
+    public void delete(Long id) {
+        quoteRepository.deleteById(id);
+    }
+
 }

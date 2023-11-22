@@ -2,10 +2,7 @@ package com.project.controllers;
 
 import com.project.dto.ShoppingCartDTO;
 import com.project.service.shoppingCart.ShoppingCartService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,5 +25,20 @@ public class ShoppingCartController {
     @GetMapping("/shoppingCart/{id}")
     public Optional<ShoppingCartDTO> get(@PathVariable String id) {
         return shoppingCartService.get(Long.parseLong(id));
+    }
+
+    @PostMapping("/shoppingCart")
+    public void create(@RequestBody ShoppingCartDTO shoppingCartDTO) {
+        shoppingCartService.create(shoppingCartDTO);
+    }
+
+    @PutMapping("/shoppingCart")
+    public void update(@RequestBody ShoppingCartDTO shoppingCartDTO) {
+        shoppingCartService.update(shoppingCartDTO);
+    }
+
+    @DeleteMapping("/shoppingCart/{id}")
+    public void delete(@PathVariable String id) {
+        shoppingCartService.delete(Long.parseLong(id));
     }
 }

@@ -2,10 +2,7 @@ package com.project.controllers;
 
 import com.project.dto.RoleDTO;
 import com.project.service.role.RoleService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,5 +25,20 @@ public class RoleController {
     @GetMapping("/role/{id}")
     public Optional<RoleDTO> get(@PathVariable String id) {
         return roleService.get(Long.parseLong(id));
+    }
+
+    @PostMapping("/role")
+    public void create(@RequestBody RoleDTO roleDTO) {
+        roleService.create(roleDTO);
+    }
+
+    @PutMapping("/role")
+    public void update(@RequestBody RoleDTO roleDTO) {
+        roleService.update(roleDTO);
+    }
+
+    @DeleteMapping("/role/{id}")
+    public void delete(@PathVariable String id) {
+        roleService.delete(Long.parseLong(id));
     }
 }

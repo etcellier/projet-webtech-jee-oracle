@@ -31,4 +31,19 @@ public class ItemService {
         Optional<Item> item = itemRepository.findById(id);
         return item.map(itemMapper::map);
     }
+
+    public void create(ItemDTO itemDTO) {
+        Item item = itemRepository.save(itemMapper.update(itemDTO, new Item()));
+        itemRepository.save(item);
+    }
+
+    public void update(ItemDTO itemDTO) {
+        Item item = itemRepository.findById(itemDTO.getId()).get();
+        item = itemMapper.update(itemDTO, item);
+        itemRepository.save(item);
+    }
+
+    public void delete(Long id) {
+        itemRepository.deleteById(id);
+    }
 }

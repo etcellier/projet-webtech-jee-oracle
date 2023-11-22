@@ -13,7 +13,6 @@ public class RoleMapper {
     }
 
     public Role update(RoleDTO dto, Role entity) {
-        entity.setId(dto.getId());
         entity.setName(dto.getName());
         return entity;
     }

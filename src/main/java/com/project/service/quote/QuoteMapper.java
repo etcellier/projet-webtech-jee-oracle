@@ -25,7 +25,6 @@ public class QuoteMapper {
     }
 
     public Quote update(QuoteDTO dto, Quote entity) {
-        entity.setId(dto.getId());
         entity.setDate(dto.getDate());
         entity.setShoppingCart(shoppingCartMapper.update(dto.getShoppingCart(), entity.getShoppingCart()));
         entity.setUser(userMapper.update(dto.getUser(), entity.getUser()));

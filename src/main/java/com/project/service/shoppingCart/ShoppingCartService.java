@@ -31,4 +31,19 @@ public class ShoppingCartService {
         Optional<ShoppingCart> shoppingCart = shoppingCartRepository.findById(id);
         return shoppingCart.map(shoppingCartMapper::map);
     }
+
+    public void create(ShoppingCartDTO shoppingCartDTO) {
+        ShoppingCart shoppingCart = shoppingCartMapper.update(shoppingCartDTO, new ShoppingCart());
+        shoppingCartRepository.save(shoppingCart);
+    }
+
+    public void update(ShoppingCartDTO shoppingCartDTO) {
+        ShoppingCart shoppingCart = shoppingCartRepository.findById(shoppingCartDTO.getId()).get();
+        shoppingCart = shoppingCartMapper.update(shoppingCartDTO, shoppingCart);
+        shoppingCartRepository.save(shoppingCart);
+    }
+
+    public void delete(Long id) {
+        shoppingCartRepository.deleteById(id);
+    }
 }

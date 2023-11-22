@@ -2,10 +2,7 @@ package com.project.controllers;
 
 import com.project.dto.UserDTO;
 import com.project.service.user.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,5 +25,20 @@ public class UserController {
     @GetMapping("/user/{id}")
     public Optional<UserDTO> get(@PathVariable String id) {
         return userService.get(Long.parseLong(id));
+    }
+
+    @PostMapping("/user")
+    public void create(@RequestBody UserDTO userDTO) {
+        userService.create(userDTO);
+    }
+
+    @PutMapping("/user")
+    public void update(@RequestBody UserDTO userDTO) {
+        userService.update(userDTO);
+    }
+
+    @DeleteMapping("/user/{id}")
+    public void delete(@PathVariable String id) {
+        userService.delete(Long.parseLong(id));
     }
 }

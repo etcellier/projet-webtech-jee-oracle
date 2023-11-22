@@ -31,4 +31,19 @@ public class UserService {
         Optional<User> user = userRepository.findById(id);
         return user.map(userMapper::map);
     }
+
+    public void create(UserDTO userDTO) {
+        User user = userMapper.update(userDTO, new User());
+        userRepository.save(user);
+    }
+
+    public void update(UserDTO userDTO) {
+        User user = userRepository.findById(userDTO.getId()).get();
+        user = userMapper.update(userDTO, user);
+        userRepository.save(user);
+    }
+
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
 }

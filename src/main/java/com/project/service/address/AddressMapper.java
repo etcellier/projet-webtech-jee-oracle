@@ -16,7 +16,6 @@ public class AddressMapper {
     }
 
     public Address update(AddressDTO addressDTO, Address address) {
-        address.setId(addressDTO.getId());
         address.setStreet(addressDTO.getStreet());
         address.setCity(addressDTO.getCity());
         address.setZip(addressDTO.getZip());

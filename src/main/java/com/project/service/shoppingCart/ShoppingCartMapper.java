@@ -21,7 +21,6 @@ public class ShoppingCartMapper {
     }
 
     public ShoppingCart update(ShoppingCartDTO dto, ShoppingCart entity) {
-        entity.setId(dto.getId());
         entity.setTotal(dto.getTotal());
         entity.setUser(userMapper.update(dto.getUser(), entity.getUser()));
         return entity;

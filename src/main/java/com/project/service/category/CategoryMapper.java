@@ -14,7 +14,6 @@ public class CategoryMapper {
     }
 
     public Category update(CategoryDTO dto, Category entity) {
-        entity.setId(dto.getId());
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
         return entity;

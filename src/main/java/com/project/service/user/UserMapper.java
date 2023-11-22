@@ -25,7 +25,6 @@ public class UserMapper {
     }
 
     public User update(UserDTO userDTO, User user) {
-        user.setId(userDTO.getId());
         user.setEmail(userDTO.getEmail());
         user.setRole(roleMapper.update(userDTO.getRole(), user.getRole()));
         user.setAddress(addressMapper.update(userDTO.getAddress(), user.getAddress()));

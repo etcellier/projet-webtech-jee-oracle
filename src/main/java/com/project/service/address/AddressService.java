@@ -31,4 +31,19 @@ public class AddressService {
         Optional<Address> address = addressRepository.findById(id);
         return address.map(addressMapper::map);
     }
+
+    public void create(AddressDTO addressDTO) {
+        Address address = addressRepository.save(addressMapper.update(addressDTO, new Address()));
+        addressRepository.save(address);
+    }
+
+    public void update(AddressDTO addressDTO) {
+        Address address = addressRepository.findById(addressDTO.getId()).get();
+        address = addressMapper.update(addressDTO, address);
+        addressRepository.save(address);
+    }
+
+    public void delete(Long id) {
+        addressRepository.deleteById(id);
+    }
 }

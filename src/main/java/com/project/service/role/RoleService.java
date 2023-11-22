@@ -31,4 +31,19 @@ public class RoleService {
         Optional<Role> role = roleRepository.findById(id);
         return role.map(roleMapper::map);
     }
+
+    public void create(RoleDTO roleDTO) {
+        Role role = roleMapper.update(roleDTO, new Role());
+        roleRepository.save(role);
+    }
+
+    public void update(RoleDTO roleDTO) {
+        Role role = roleRepository.findById(roleDTO.getId()).get();
+        role = roleMapper.update(roleDTO, role);
+        roleRepository.save(role);
+    }
+
+    public void delete(Long id) {
+        roleRepository.deleteById(id);
+    }
 }

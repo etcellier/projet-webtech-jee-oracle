@@ -23,7 +23,6 @@ public class ProductMapper {
     }
 
     public Product update(ProductDTO dto, Product entity) {
-        entity.setId(dto.getId());
         entity.setName(dto.getName());
         entity.setDescription(dto.getDescription());
         entity.setPricePt(dto.getPricePt());

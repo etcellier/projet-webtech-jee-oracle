@@ -2,10 +2,7 @@ package com.project.controllers;
 
 import com.project.dto.QuoteDTO;
 import com.project.service.quote.QuoteService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,4 +27,18 @@ public class QuoteController {
         return quoteService.get(Long.parseLong(id));
     }
 
+    @PostMapping("/quote")
+    public void create(@RequestBody QuoteDTO quoteDTO) {
+        quoteService.create(quoteDTO);
+    }
+
+    @PutMapping("/quote")
+    public void update(@RequestBody QuoteDTO quoteDTO) {
+        quoteService.update(quoteDTO);
+    }
+
+    @DeleteMapping("/quote/{id}")
+    public void delete(@PathVariable String id) {
+        quoteService.delete(Long.parseLong(id));
+    }
 }
