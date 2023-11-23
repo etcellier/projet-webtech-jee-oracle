@@ -41,7 +41,7 @@ public class Item {
         this.unitPrice = unitPrice;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_category")
     public Product getProduct() {
         return product;
