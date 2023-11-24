@@ -2,7 +2,9 @@ package com.project.service.role;
 
 import com.project.dto.RoleDTO;
 import com.project.entity.Role;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RoleMapper {
 
     public RoleDTO map(Role entity) {

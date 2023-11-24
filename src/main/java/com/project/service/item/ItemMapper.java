@@ -4,7 +4,9 @@ package com.project.service.item;
 import com.project.dto.ItemDTO;
 import com.project.entity.Item;
 import com.project.service.product.ProductMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ItemMapper {
 
     protected final ProductMapper productMapper;
@@ -13,6 +15,7 @@ public class ItemMapper {
         this.productMapper = productMapper;
     }
 
+    // Map entity to DTO
     public ItemDTO map(Item entity) {
         ItemDTO dto = new ItemDTO();
         dto.setId(entity.getId());
@@ -22,6 +25,7 @@ public class ItemMapper {
         return dto;
     }
 
+    // Update entity with DTO
     public Item update(ItemDTO dto, Item entity) {
         entity.setProduct(productMapper.update(dto.getProduct(), entity.getProduct()));
         entity.setQuantity(dto.getQuantity());

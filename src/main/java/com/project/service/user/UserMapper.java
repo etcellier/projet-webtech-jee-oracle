@@ -4,7 +4,9 @@ import com.project.dto.UserDTO;
 import com.project.entity.User;
 import com.project.service.address.AddressMapper;
 import com.project.service.role.RoleMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserMapper {
 
     protected final RoleMapper roleMapper;

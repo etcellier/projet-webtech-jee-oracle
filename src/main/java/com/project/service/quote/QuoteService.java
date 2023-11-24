@@ -3,11 +3,13 @@ package com.project.service.quote;
 import com.project.dto.QuoteDTO;
 import com.project.entity.Quote;
 import com.project.repository.QuoteRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class QuoteService {
 
     protected final QuoteMapper quoteMapper;

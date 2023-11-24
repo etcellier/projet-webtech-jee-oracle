@@ -3,11 +3,13 @@ package com.project.service.role;
 import com.project.dto.RoleDTO;
 import com.project.entity.Role;
 import com.project.repository.RoleRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class RoleService {
 
     protected final RoleMapper roleMapper;

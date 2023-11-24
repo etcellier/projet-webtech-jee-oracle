@@ -3,11 +3,13 @@ package com.project.service.shoppingCartItem;
 import com.project.dto.ShoppingCartItemDTO;
 import com.project.entity.ShoppingCartItem;
 import com.project.repository.ShoppingCartItemRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ShoppingCartItemService {
 
     protected final ShoppingCartItemMapper shoppingCartItemMapper;

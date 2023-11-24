@@ -4,7 +4,9 @@ import com.project.dto.QuoteDTO;
 import com.project.entity.Quote;
 import com.project.service.shoppingCart.ShoppingCartMapper;
 import com.project.service.user.UserMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class QuoteMapper {
 
     protected final ShoppingCartMapper shoppingCartMapper;

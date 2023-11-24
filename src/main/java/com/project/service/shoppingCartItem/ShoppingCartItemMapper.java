@@ -4,7 +4,9 @@ import com.project.dto.ShoppingCartItemDTO;
 import com.project.entity.ShoppingCartItem;
 import com.project.service.item.ItemMapper;
 import com.project.service.shoppingCart.ShoppingCartMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ShoppingCartItemMapper {
 
     protected final ShoppingCartMapper shoppingCartMapper;

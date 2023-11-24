@@ -3,7 +3,9 @@ package com.project.service.shoppingCart;
 import com.project.dto.ShoppingCartDTO;
 import com.project.entity.ShoppingCart;
 import com.project.service.user.UserMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ShoppingCartMapper {
 
     protected final UserMapper userMapper;
