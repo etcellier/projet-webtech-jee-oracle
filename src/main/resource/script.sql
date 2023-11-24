@@ -1,25 +1,25 @@
 -- Création de la table Address
 CREATE TABLE address (
         id INT NOT NULL,
-        street TEXT,
-        city TEXT,
-        zip TEXT,
-        country TEXT,
+        street TEXT NOT NULL,
+        city TEXT NOT NULL,
+        zip TEXT NOT NULL,
+        country TEXT NOT NULL,
         PRIMARY KEY (id)
 );
 
 -- Création de la table User
 CREATE TABLE role (
         id INT NOT NULL,
-        name TEXT,
+        name TEXT NOT NULL,
         PRIMARY KEY (id)
 );
 
 -- Création de la table Role
 CREATE TABLE user (
         id INT NOT NULL,
-        email TEXT,
-        password TEXT,
+        email TEXT NOT NULL,
+        password TEXT NOT NULL,
         id_address INT NOT NULL,
         id_role INT NOT NULL,
         PRIMARY KEY (id),
@@ -30,7 +30,7 @@ CREATE TABLE user (
 -- Création de la table Category
 CREATE TABLE category (
         id INT NOT NULL,
-        name TEXT,
+        name TEXT NOT NULL,
         description TEXT,
         PRIMARY KEY (id)
 );
@@ -38,9 +38,9 @@ CREATE TABLE category (
 -- Création de la table Product
 CREATE TABLE product (
          id INT NOT NULL,
-         name TEXT,
+         name TEXT NOT NULL,
          description TEXT,
-         price_pt DOUBLE,
+         price_pt DOUBLE NOT NULL,
          id_category INT NOT NULL,
          PRIMARY KEY (id),
          FOREIGN KEY (id_category) REFERENCES category(id),
@@ -49,8 +49,8 @@ CREATE TABLE product (
 -- Création de la table Item
 CREATE TABLE item (
         id INT NOT NULL,
-        quantity INT,
-        unit_price DOUBLE,
+        quantity INT NOT NULL,
+        unit_price DOUBLE NOT NULL,
         id_product INT NOT NULL,
         PRIMARY KEY (id),
         FOREIGN KEY (id_product) REFERENCES product(id)
@@ -59,7 +59,7 @@ CREATE TABLE item (
 -- Création de la table ShoppingCart
 CREATE TABLE shopping_cart (
         id INT NOT NULL,
-        total DOUBLE,
+        total DOUBLE NOT NULL,
         id_user INT NOT NULL,
         PRIMARY KEY (id),
         FOREIGN KEY (id_user) REFERENCES user(id)
@@ -78,7 +78,7 @@ CREATE TABLE shopping_cart_item (
 -- Création de la table Quote
 CREATE TABLE quote (
         id INT NOT NULL,
-        date DATE,
+        date DATE NOT NULL,
         id_user INT NOT NULL,
         id_shopping_cart INT NOT NULL,
         PRIMARY KEY (id),

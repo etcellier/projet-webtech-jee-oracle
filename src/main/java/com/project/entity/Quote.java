@@ -15,7 +15,7 @@ public class Quote {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -24,7 +24,7 @@ public class Quote {
         this.id = id;
     }
 
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     public Date getDate() {
         return date;
     }

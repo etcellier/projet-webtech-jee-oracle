@@ -13,7 +13,7 @@ public class Role {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -22,7 +22,7 @@ public class Role {
         this.id = id;
     }
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }

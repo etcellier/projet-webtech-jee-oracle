@@ -14,7 +14,7 @@ public class Item {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -23,7 +23,7 @@ public class Item {
         this.id = id;
     }
 
-    @Column(name = "quantity")
+    @Column(name = "quantity", nullable = false)
     public Integer getQuantity() {
         return quantity;
     }
@@ -32,7 +32,7 @@ public class Item {
         this.quantity = quantity;
     }
 
-    @Column(name = "unit_price")
+    @Column(name = "unit_price", nullable = false)
     public Double getUnitPrice() {
         return unitPrice;
     }
@@ -42,7 +42,7 @@ public class Item {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_category")
+    @JoinColumn(name = "id_category", nullable = false)
     public Product getProduct() {
         return product;
     }

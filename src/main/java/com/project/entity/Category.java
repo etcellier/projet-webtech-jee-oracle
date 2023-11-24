@@ -14,7 +14,7 @@ public class Category {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -23,7 +23,7 @@ public class Category {
         this.id = id;
     }
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }

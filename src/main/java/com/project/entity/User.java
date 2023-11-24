@@ -16,7 +16,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -25,7 +25,7 @@ public class User {
         this.id = id;
     }
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     public String getEmail() {
         return email;
     }
@@ -34,7 +34,7 @@ public class User {
         this.email = email;
     }
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     public String getPassword() {
         return password;
     }

@@ -14,7 +14,7 @@ public class ShoppingCart {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -23,7 +23,7 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    @Column(name = "total")
+    @Column(name = "total", nullable = false)
     public Double getTotal() {
         return total;
     }

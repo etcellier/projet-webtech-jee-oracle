@@ -16,7 +16,7 @@ public class Product {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -25,7 +25,7 @@ public class Product {
         this.id = id;
     }
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     public String getName() {
         return name;
     }
@@ -43,7 +43,7 @@ public class Product {
         this.description = description;
     }
 
-    @Column(name = "price_pt")
+    @Column(name = "price_pt", nullable = false)
     public Double getPricePt() {
         return pricePt;
     }

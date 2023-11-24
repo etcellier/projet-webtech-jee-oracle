@@ -16,7 +16,7 @@ public class Address {
 
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
     }
@@ -25,7 +25,7 @@ public class Address {
         this.id = id;
     }
 
-    @Column(name = "street")
+    @Column(name = "street", nullable = false)
     public String getStreet() {
         return street;
     }
@@ -34,7 +34,7 @@ public class Address {
         this.street = street;
     }
 
-    @Column(name = "city")
+    @Column(name = "city", nullable = false)
     public String getCity() {
         return city;
     }
@@ -43,7 +43,7 @@ public class Address {
         this.city = city;
     }
 
-    @Column(name = "zip")
+    @Column(name = "zip", nullable = false)
     public String getZip() {
         return zip;
     }
@@ -52,7 +52,7 @@ public class Address {
         this.zip = zip;
     }
 
-    @Column(name = "country")
+    @Column(name = "country", nullable = false)
     public String getCountry() {
         return country;
     }
